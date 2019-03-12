@@ -110,14 +110,17 @@
             var value = e.target.value;
             var elm = document.createElement('script')
             elm.src=`https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${value}7&cb=cb`;
-            $('body').append(elm);
+            $('body .js').append(elm);
+            setTimeout(()=>{
+                $('body .js').empty();
+            },200);
         });
         $('.search').on('click',()=>{
             var value = $('.input')[0].value;
             location.href=`https://www.baidu.com/s?wd=${value}`;
         });
         $(document).keydown(function(event){
-            if(event.keyCode==13){
+            if(event.keyCode==13&&$('.input')[0].value!=""){
                 var value = $('.input')[0].value;
                 location.href=`https://www.baidu.com/s?wd=${value}`;
             }
@@ -128,7 +131,7 @@
 <body>
     <div class="container">
         <div class="content">
-            <div class="logo">假<img src="https://github.com/Mario34/mario34.github.io/raw/master/googlelogo.pngg" alt=""></div>
+            <div class="logo">假<img src="https://github.com/Mario34/mario34.github.io/raw/master/googlelogo.png" alt=""></div>
             <div class="input_box">
                 <input class="input" type="text" placeholder="请输入关键词">
                 <div class="search"><img src="https://github.com/Mario34/mario34.github.io/raw/master/search.png" alt=""></div>
@@ -137,6 +140,7 @@
         <div class="result">
         </div>
     </div>
+    <div class="js"></div>
 </body>
 
 
